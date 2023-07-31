@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { Link } from 'react-router-dom';
 // import './styles/LoginScreen.css';
 
 
-const HomeScreen = () => {
+const LoginScreen = () => {
+
+    const navigate = useNavigate();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [modalVisible, setModalVisible] = useState(false);
@@ -35,6 +40,7 @@ const HomeScreen = () => {
 
         // For demonstration purposes, directly navigate to the MainScreen
         // handleNavigationToMainScreen();
+        navigate("/Home");
         setEmail('');
         setPassword('');
     };
@@ -304,7 +310,7 @@ const styles = {
       },
 };
 
-export default HomeScreen;
+export default LoginScreen;
 
 
 

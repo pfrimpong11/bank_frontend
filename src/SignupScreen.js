@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // import './styles/SignupScreen.css';
 
 const SignupScreen = () => {
     const navigateToLogin = "/Login";
+    const navigate = useNavigate();
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -36,7 +38,7 @@ const SignupScreen = () => {
             password
         });
 
-        // navigateToLogin();
+        navigate("/Login");
 
         setFirstName('');
         setLastName('');
