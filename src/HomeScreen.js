@@ -1,12 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const MainScreen = () => {
+
+    const navigate = useNavigate();
+
   const accountBalanceDetails = {
     accountBalance: "1000.64",
   };
 
   const handleTransferPress = () => {
     // Handle transfer press logic
+    navigate("/Transfer");
   };
 
   // Rest of the handle functions...
@@ -19,7 +24,7 @@ const MainScreen = () => {
       </div>
 
       <div style={styles.iconsContainer}>
-        <button style={styles.iconButton} >
+        <button style={styles.iconButton} onClick={handleTransferPress} >
           <img src={require('./images/transfer.png')} alt="Transfer Icon" style={styles.iconImage} />
           <div style={styles.iconText}>Transfer</div>
         </button>
@@ -39,7 +44,6 @@ const MainScreen = () => {
           <img src={require('./images/currency-converter.jpg')} alt="Transfer Icon" style={styles.iconImage} />
           <div style={styles.iconText}>converter</div>
         </button>
-        {/* Rest of the icon buttons */}
       </div>
 
       <div style={styles.additionalContainer}>
@@ -55,7 +59,6 @@ const MainScreen = () => {
           <img src={require('./images/about.png')} alt="Profile Icon" style={styles.additionalIcon} />
           <div style={styles.additionalText}>about</div>
         </button>
-        {/* Rest of the additional buttons */}
       </div>
     </div>
   );

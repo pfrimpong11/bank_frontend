@@ -174,12 +174,12 @@ const styles = {
         height: '50px',
         width: '90%',
         borderColor: 'whit',
-        borderWidth: '1px',
         borderRadius: '50px',
         marginTop: '20px',
         paddingVertical: '10px',
         paddingLeft: '20px',
         backgroundColor: '#ffffff',
+        borderWidth: 0,
     },
     
     signupButtonBox:{
@@ -196,6 +196,7 @@ const styles = {
         width: '50%',
         alignSelf: 'center',
         color: '#000',
+        borderWidth: 0,
     },
     
     signupButtonText: {

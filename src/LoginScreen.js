@@ -101,12 +101,12 @@ const LoginScreen = () => {
                             </div>
                             <div style={styles.modalResetButtonBox}>
                                 <button style={styles.resetButton} onClick={handleResetPasswordPress}>
-                                    Reset Password
+                                  <p style={styles.resetButtonText}>Reset Password</p>
                                 </button>
                             </div>
                             <div style={styles.modalCloseButtonBox}>
                                 <button style={styles.closeButton} onClick={() => setModalVisible(false)}>
-                                    Close
+                                  <p style={styles.closeButtonText}>Close</p>
                                 </button>
                             </div>
                         </div>
@@ -195,6 +195,7 @@ const styles = {
         width: '50%',
         alignSelf: 'center',
         color: '#000',
+        borderWidth: 0,
     },
       
       loginButtonText: {
@@ -267,7 +268,7 @@ const styles = {
         paddingVertical: '10px',
         paddingLeft: '15px',
         borderColor: '#66b5e1',
-        borderWidth: 1,
+        borderWidth: 3,
         borderRadius: '50px',
         backgroundColor: '#fff',
         color: '#000',
@@ -276,15 +277,16 @@ const styles = {
       
       modalResetButtonBox: {
         marginHorizontal: '50px',
-        marginLeft: '25%',
+        marginLeft: '5%',
       },
       
       resetButton: {
         backgroundColor: '#66b5e1',
-        padding: '10px',
+        width: '50%',
         alignItems: 'center',
         borderRadius: '50px',
         marginBottom: '10px',
+        borderWidth: 0,
       },
       
       resetButtonText: {
@@ -293,20 +295,20 @@ const styles = {
       
       modalCloseButtonBox: {
         marginHorizontal: '50px',
-        marginLeft: '25%',
+        marginLeft: '5%',
       },
       
       closeButton: {
         backgroundColor: 'gray',
-        padding: '10px',
-        paddingLeft: '20px',
-        paddingRight: '20px',
+        width: '50%',
         alignItems: 'center',
         borderRadius: '50px',
+        marginBottom: '10px',
+        borderWidth: 0,
       },
       
       closeButtonText: {
-        color: 'white',
+        color: '#fff',
       },
 };
 
