@@ -14,7 +14,37 @@ const MainScreen = () => {
     navigate("/Transfer");
   };
 
-  // Rest of the handle functions...
+  const handleMomoPress = () => {
+    // Handle MOMO press logic
+    navigate("/Momo");
+  };
+
+  const handleBillPress = () => {
+    // Handle Bill press logic
+    navigate("/Bill");
+  };
+
+  const handleHistoryPress = () => {
+    // Handle Transaction history press logic
+    navigate("/History");
+  };
+
+  const handleConverterPress = () => {
+    navigate("/Converter");
+  };
+
+  const handleProfilePress = () => {
+    navigate("/Profile");
+  };
+
+  const handleHelpPress = () => {
+    navigate("/Help");
+  };
+
+  const handleAboutPress = () => {
+    navigate("/About");
+  };
+
 
   return (
     <div style={styles.container}>
@@ -28,34 +58,34 @@ const MainScreen = () => {
           <img src={require('./images/transfer.png')} alt="Transfer Icon" style={styles.iconImage} />
           <div style={styles.iconText}>Transfer</div>
         </button>
-        <button style={styles.iconButton} >
+        <button style={styles.iconButton} onClick={handleMomoPress} >
           <img src={require('./images/momo.png')} alt="Transfer Icon" style={styles.iconImage} />
           <div style={styles.iconText}>MOMO</div>
         </button>
-        <button style={styles.iconButton} >
+        <button style={styles.iconButton} onClick={handleBillPress} >
           <img src={require('./images/bills.png')} alt="Transfer Icon" style={styles.iconImage} />
           <div style={styles.iconText}>Bills</div>
         </button>
-        <button style={styles.iconButton} >
+        <button style={styles.iconButton} onClick={handleHistoryPress} >
           <img src={require('./images/transaction_history.png')} alt="Transfer Icon" style={styles.iconImage} />
           <div style={styles.iconText}>History</div>
         </button>
-        <button style={styles.iconButton} >
+        <button style={styles.iconButton} onClick={handleConverterPress} >
           <img src={require('./images/currency-converter.jpg')} alt="Transfer Icon" style={styles.iconImage} />
           <div style={styles.iconText}>converter</div>
         </button>
       </div>
 
       <div style={styles.additionalContainer}>
-        <button style={styles.additionalButton} >
+        <button style={styles.additionalButton} onClick={handleProfilePress} >
           <img src={require('./images/profile.png')} alt="Profile Icon" style={styles.additionalIcon} />
           <div style={styles.additionalText}>Profile</div>
         </button>
-        <button style={styles.additionalButton} >
+        <button style={styles.additionalButton} onClick={handleHelpPress} >
           <img src={require('./images/help.png')} alt="Profile Icon" style={styles.additionalIcon} />
           <div style={styles.additionalText}>Help</div>
         </button>
-        <button style={styles.additionalButton} >
+        <button style={styles.additionalButton} onClick={handleAboutPress} >
           <img src={require('./images/about.png')} alt="Profile Icon" style={styles.additionalIcon} />
           <div style={styles.additionalText}>about</div>
         </button>
