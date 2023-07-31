@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './styles/LoginScreen.css';
+// import './styles/LoginScreen.css';
 
 
 const HomeScreen = () => {
@@ -50,56 +50,56 @@ const HomeScreen = () => {
     };
 
     return (
-        <div className="container">
-            <div className="topHalf">
-                <img src={require('./images/hq-bank-logo.png')} alt="Bank Logo" className="bankImage" />
+        <div style={styles.container} >
+            <div style={styles.topHalf}>
+                <img src={require('./images/hq-bank-logo.png')} alt="Bank Logo" style={styles.bankImage} />
             </div>
-            <div className="bottomHalf">
-                <div className="inputBox">
+            <div style={styles.bottomHalf}>
+                <div style={styles.inputBox}>
                 <input
                     type="text"
-                    className="input"
+                    style={styles.input}
                     placeholder="Email"
                     value={email}
                     onChange={handleEmailChange}
                 />
                 </div>
-                <div className="inputBox">
+                <div style={styles.inputBox}>
                 <input
                     type="password"
-                    className="input"
+                    style={styles.input}
                     placeholder="Password"
                     value={password}
                     onChange={handlePasswordChange}
                 />
                 </div>
 
-                <p className="forgotPassword">
-                    <Link className="forgotPassworLink" onClick={() => setModalVisible(true)} >Forgot Password?</Link>
+                <p style={styles.forgotPassword}>
+                    <Link style={styles.forgotPassworLink} onClick={() => setModalVisible(true)} >Forgot Password?</Link>
                 </p>
 
                 {/* Modal content */}
                 {modalVisible && (
-                    <div className="modal">
-                        <div className="modalContent">
-                            <h2 className="modalTitle">Forgot Password</h2>
-                            <div className="emailAddressTextBox">
-                                <span className="emailAddressText">Enter email address</span>
+                    <div style={styles.modal}>
+                        <div style={styles.modalContent}>
+                            <h2 style={styles.modalTitle}>Forgot Password</h2>
+                            <div style={styles.emailAddressTextBox}>
+                                <span style={styles.emailAddressText}>Enter email address</span>
                             </div>
-                            <div className="modalEmailbox">
+                            <div style={styles.modalEmailbox}>
                                 <input
                                     type="text"
-                                    className="forgotpasswordemailInput"
+                                    style={styles.forgotpasswordemailInput}
                                     onChange={(event) => setForgotPasswordEmail(event.target.value)}
                                 />
                             </div>
-                            <div className="modalResetButtonBox">
-                                <button className="resetButton" onClick={handleResetPasswordPress}>
+                            <div style={styles.modalResetButtonBox}>
+                                <button style={styles.resetButton} onClick={handleResetPasswordPress}>
                                     Reset Password
                                 </button>
                             </div>
-                            <div className="modalCloseButtonBox">
-                                <button className="closeButton" onClick={() => setModalVisible(false)}>
+                            <div style={styles.modalCloseButtonBox}>
+                                <button style={styles.closeButton} onClick={() => setModalVisible(false)}>
                                     Close
                                 </button>
                             </div>
@@ -107,17 +107,201 @@ const HomeScreen = () => {
                     </div>
                 )}
 
-                <div className="loginButtonBox">
-                <button className="loginButton" onClick={handleLoginPress}>
+                <div style={styles.loginButtonBox}>
+                <button style={styles.loginButton} onClick={handleLoginPress}>
                     Login
                 </button>
                 </div>
-                <p className="signupText"> 
-                    Don't have an account? <Link to="/Signup" className="signupLink" > Sign up </Link>
+                <p style={styles.signupText}> 
+                    Don't have an account? <Link to="/Signup" style={styles.signupLink} > Sign up </Link>
                 </p>
             </div>
         </div>
     );
+};
+
+const styles = {
+    container: {
+        display: 'flex',
+        flexDirection : 'column',
+        minHeight: '100vh',
+        backgroundColor : 'white',
+    },
+    topHalf: {
+        flex: 1,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    bankImage: {
+        width: '250px', /* Adjust the desired width */
+        height: '250px', /* Adjust the desired height */
+      },
+      
+      bottomHalf: {
+        flex: 1,
+        backgroundColor: '#66b5e1',
+        borderTopLeftRadius: '120px',
+        padding: '30px',
+        paddingLeft: '50px',
+      },
+      
+      appName: {
+        fontSize: '20px',
+        fontWeight: 'bold',
+        marginTop: '10px',
+      },
+    
+      input: {
+        height: '50px',
+        width: '95%',
+        borderColor: 'white',
+        borderWidth: 1,
+        borderRadius: '50px',
+        marginTop: '40px',
+        paddingVertical: '30px',
+        paddingLeft: 10,
+        backgroundColor: '#ffffff',
+      },
+    
+      forgotPassword: {
+        marginTop: '7px',
+        marginLeft: '20px',
+        textAlign: 'left',
+      },
+    
+    forgotPassworLink: {
+      textDecoration: 'none',
+      color: 'white',
+    },
+    
+    loginButtonBox:{
+        marginLeft: '50px',
+    },
+    
+    loginButton: {
+        backgroundColor: 'white',
+        borderRadius: '25px',
+        marginTop: '20px',
+        padding: '15px',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '50%',
+        alignSelf: 'center',
+        color: '#000',
+    },
+      
+      loginButtonText: {
+        color: '#222',
+        fontWeight: 'bold',
+      },
+      
+      signupText :{
+        color: 'white',
+        fontWeight: 500,
+        textAlign: 'center',
+      },
+    
+      signupLink:{
+        textDecoration: 'none',
+        color: '#fff',
+      },
+      
+      /* Modal Styling */
+      modal: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      
+      modalContent: {
+        backgroundColor: '#fff',
+        padding: '20px',
+        borderRadius: '8px',
+        width: '80%',
+      },
+      
+      modalTitleBox: {
+        alignItems: 'center',
+        marginTop: '10px',
+        marginBottom: '20px',
+      },
+      
+      modalTitle: {
+        fontSize: '18px',
+        fontWeight: 'bold',
+        marginBottom: '20px',
+        textAlign: 'center',
+      },
+      
+      emailAddressTextBox: {
+        marginLeft: '20px',
+        marginBottom: '5px',
+      },
+      
+      emailAddressText: {
+        fontWeight: 'bold',
+      },
+      
+      modalEmailbox: {
+        margin: '10px',
+        marginBottom: '20px',
+      },
+      
+      forgotpasswordemailInput: {
+        height: '40px',
+        width: '80%',
+        marginBottom: '10px',
+        paddingVertical: '10px',
+        paddingLeft: '15px',
+        borderColor: '#66b5e1',
+        borderWidth: 1,
+        borderRadius: '50px',
+        backgroundColor: '#fff',
+        color: '#000',
+        fontSize: '15px',
+      },
+      
+      modalResetButtonBox: {
+        marginHorizontal: '50px',
+        marginLeft: '25%',
+      },
+      
+      resetButton: {
+        backgroundColor: '#66b5e1',
+        padding: '10px',
+        alignItems: 'center',
+        borderRadius: '50px',
+        marginBottom: '10px',
+      },
+      
+      resetButtonText: {
+        color: 'white',
+      },
+      
+      modalCloseButtonBox: {
+        marginHorizontal: '50px',
+        marginLeft: '25%',
+      },
+      
+      closeButton: {
+        backgroundColor: 'gray',
+        padding: '10px',
+        paddingLeft: '20px',
+        paddingRight: '20px',
+        alignItems: 'center',
+        borderRadius: '50px',
+      },
+      
+      closeButtonText: {
+        color: 'white',
+      },
 };
 
 export default HomeScreen;

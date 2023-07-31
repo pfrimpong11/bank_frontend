@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './styles/SignupScreen.css';
+// import './styles/SignupScreen.css';
 
 const SignupScreen = () => {
     const navigateToLogin = "/Login";
@@ -49,94 +49,173 @@ const SignupScreen = () => {
     };
 
     return (
-        <div className='container'>
-            <div className="registerBox">
-                <h1 className="registerText">Register</h1>
+        <div style={styles.container}>
+            <div style={styles.registerBox}>
+                <h1 style={styles.registerText}>Register</h1>
             </div>
-            <div className="bottomHalf">
-                <div className="inputBox">
+            <div style={styles.bottomHalf}>
+                <div style={styles.inputBox}>
                     <input
-                        className="input"
+                        style={styles.input}
                         type="text"
                         placeholder="First Name"
                         value={firstName}
                         onChange={handleFirstNameChange}
                     />
                 </div>
-                <div className="inputBox">
+                <div style={styles.inputBox}>
                     <input
-                        className="input"
+                        style={styles.input}
                         type="text"
                         placeholder="Last Name"
                         value={lastName}
                         onChange={handleLastNameChange}
                     />
                 </div>
-                <div className="inputBox">
+                <div style={styles.inputBox}>
                     <input
-                        className="input"
+                        style={styles.input}
                         type="text"
                         placeholder="Date of Birth (dd-mm-yy)"
                         value={dateOfBirth}
                         onChange={handleDateOfBirthChange}
                     />
                 </div>
-                <div className="inputBox">
+                <div style={styles.inputBox}>
                     <input
-                        className="input"
+                        style={styles.input}
                         type="tel"
                         placeholder="Phone Number (233XXXXXXX)"
                         value={phoneNumber}
                         onChange={handlePhoneNumberChange}
                     />
                 </div>
-                <div className="inputBox">
+                <div style={styles.inputBox}>
                     <input
-                        className="input"
+                        style={styles.input}
                         type="email"
                         placeholder="Email"
                         value={email}
                         onChange={handleEmailChange}
                     />
                 </div>
-                <div className="inputBox">
+                <div style={styles.inputBox}>
                     <input
-                        className="input"
+                        style={styles.input}
                         type="text"
                         placeholder="Gh Card Number"
                         value={ghanaCardNumber}
                         onChange={handleGhanaCardNumberChange}
                     />
                 </div>
-                <div className="inputBox">
+                <div style={styles.inputBox}>
                     <input
-                        className="input"
+                        style={styles.input}
                         type="text"
                         placeholder="Address (GA-xxx-xxxx)"
                         value={address}
                         onChange={handleAddressChange}
                     />
                 </div>
-                <div className="inputBox">
+                <div style={styles.inputBox}>
                     <input
-                        className="input"
+                        style={styles.input}
                         type="password"
                         placeholder="Password"
                         value={password}
                         onChange={handlePasswordChange}
                     />
                 </div>
-                <div className="signupButtonBox">
-                <button className="signupButton" onClick={handleSignUpPress}>
+                <div style={styles.signupButtonBox}>
+                <button style={styles.signupButton} onClick={handleSignUpPress}>
                     Register
                 </button>
                 </div>
-                <p className="signInText">
-                    Already have an account? <Link to={navigateToLogin} className="signinLink" > Sign in </Link>
+                <p style={styles.signInText}>
+                    Already have an account? <Link to={navigateToLogin} style={styles.signinLink} > Sign in </Link>
                 </p>
             </div>
         </div>
     );
+};
+
+const styles = {
+    container: {
+        flex: 1,
+        backgroundColor: '#66B5E1',
+        minHeight: '100vh',
+    },
+    
+    registerBox :{
+        paddingTop: '20px',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+        marginBottom: 0,
+    },
+    
+    registerText :{
+        color: 'white',
+        fontSize: '40px',
+        fontWeight: 'bold',
+        marginBottom: 0,
+        marginTop: '5px',
+    },
+    
+    bottomHalf: {
+        flex: 1,
+        backgroundColor: '#66B5E1',
+        padding: '20px',
+    },
+    
+    input: {
+        height: '50px',
+        width: '90%',
+        borderColor: 'whit',
+        borderWidth: '1px',
+        borderRadius: '50px',
+        marginTop: '20px',
+        paddingVertical: '10px',
+        paddingLeft: '20px',
+        backgroundColor: '#ffffff',
+    },
+    
+    signupButtonBox:{
+        marginLeft: '25%',
+    },
+    
+    signupButton: {
+        backgroundColor: 'white',
+        borderRadius: '25px',
+        marginTop: '20px',
+        padding: '15px',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '50%',
+        alignSelf: 'center',
+        color: '#000',
+    },
+    
+    signupButtonText: {
+        color: '#222',
+        fontWeight: 'bold',
+    },
+    
+    signInButton: {
+        marginTop: '20px',
+        alignSelf: 'center',
+        
+    },
+    
+    signInText: {
+        color: 'white',
+        fontWeight: '500',
+    },
+    
+    signinLink:{
+        textDecoration: 'none',
+        color: '#fff',
+    },
 };
 
 export default SignupScreen;
