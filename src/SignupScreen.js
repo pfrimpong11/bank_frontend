@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -7,12 +8,12 @@ const SignupScreen = () => {
     const navigateToLogin = "/Login";
     const navigate = useNavigate();
 
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [dateOfBirth, setDateOfBirth] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
+    const [first_name, setFirstName] = useState('');
+    const [last_name, setLastName] = useState('');
+    const [date_of_birth, setDateOfBirth] = useState('');
+    const [phone, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
-    const [ghanaCardNumber, setGhanaCardNumber] = useState('');
+    const [ghana_card_number, setGhanaCardNumber] = useState('');
     const [address, setAddress] = useState('');
     const [password, setPassword] = useState('');
 
@@ -25,20 +26,33 @@ const SignupScreen = () => {
     const handleAddressChange = (e) => setAddress(e.target.value);
     const handlePasswordChange = (e) => setPassword(e.target.value);
 
-    const handleSignUpPress = () => {
+    const handleSignUpPress = async() => {
         // Save the details of the user in the database and navigate to the login screen
-        console.log('User details:', {
-            firstName,
-            lastName,
-            dateOfBirth,
-            phoneNumber,
+        const payload = {
+            first_name,
+            last_name,
+            date_of_birth,
+            phone,
             email,
-            ghanaCardNumber,
+            ghana_card_number,
             address,
             password
-        });
+        }
 
-        navigate("/Login");
+   const res =   await  axios.post("",JSON.stringify(payload),{
+        headers:{
+            withCredentials:true
+        }
+      })
+      if (res.data.ok) {
+          navigate("/Login");
+        
+      }
+      else{
+
+        alert("Something bad hapened try agian")
+      }
+
 
         setFirstName('');
         setLastName('');
@@ -61,8 +75,9 @@ const SignupScreen = () => {
                         style={styles.input}
                         type="text"
                         placeholder="First Name"
-                        value={firstName}
+                        value={first_name}
                         onChange={handleFirstNameChange}
+                        required
                     />
                 </div>
                 <div style={styles.inputBox}>
@@ -70,8 +85,10 @@ const SignupScreen = () => {
                         style={styles.input}
                         type="text"
                         placeholder="Last Name"
-                        value={lastName}
+                        value={last_name}
                         onChange={handleLastNameChange}
+                        required
+
                     />
                 </div>
                 <div style={styles.inputBox}>
@@ -79,8 +96,10 @@ const SignupScreen = () => {
                         style={styles.input}
                         type="text"
                         placeholder="Date of Birth (dd-mm-yy)"
-                        value={dateOfBirth}
+                        value={date_of_birth}
                         onChange={handleDateOfBirthChange}
+                        required
+
                     />
                 </div>
                 <div style={styles.inputBox}>
@@ -88,8 +107,10 @@ const SignupScreen = () => {
                         style={styles.input}
                         type="tel"
                         placeholder="Phone Number (233XXXXXXX)"
-                        value={phoneNumber}
+                        value={phone}
                         onChange={handlePhoneNumberChange}
+                        required
+
                     />
                 </div>
                 <div style={styles.inputBox}>
@@ -99,6 +120,8 @@ const SignupScreen = () => {
                         placeholder="Email"
                         value={email}
                         onChange={handleEmailChange}
+                        required
+
                     />
                 </div>
                 <div style={styles.inputBox}>
@@ -106,8 +129,10 @@ const SignupScreen = () => {
                         style={styles.input}
                         type="text"
                         placeholder="Gh Card Number"
-                        value={ghanaCardNumber}
+                        value={ghana_card_number}
                         onChange={handleGhanaCardNumberChange}
+                        required
+
                     />
                 </div>
                 <div style={styles.inputBox}>
@@ -116,6 +141,7 @@ const SignupScreen = () => {
                         type="text"
                         placeholder="Address (GA-xxx-xxxx)"
                         value={address}
+                        required
                         onChange={handleAddressChange}
                     />
                 </div>
@@ -126,6 +152,8 @@ const SignupScreen = () => {
                         placeholder="Password"
                         value={password}
                         onChange={handlePasswordChange}
+                        required
+
                     />
                 </div>
                 <div style={styles.signupButtonBox}>
@@ -251,12 +279,12 @@ export default SignupScreen;
 
 // const SignUpScreen = () => {
 //     const [formData, setFormData] = useState({
-//     firstName: '',
-//     lastName: '',
-//     dateOfBirth: '',
-//     phoneNumber: '',
+//     first_name: '',
+//     last_name: '',
+//     date_of_birth: '',
+//     phone: '',
 //     email: '',
-//     ghanaCardNumber: '',
+//     ghana_card_number: '',
 //     address: '',
 //     password: ''
 //     });
@@ -279,19 +307,19 @@ export default SignupScreen;
 //     <form onSubmit={handleSubmit}>
 //         <div>
 //             <label>First Name:</label>
-//             <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} />
+//             <input type="text" name="first_name" value={formData.first_name} onChange={handleChange} />
 //         </div>
 //         <div>
 //             <label>Last Name:</label>
-//             <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} />
+//             <input type="text" name="last_name" value={formData.last_name} onChange={handleChange} />
 //         </div>
 //         <div>
 //             <label>Date of Birth:</label>
-//             <input type="date" name="dateOfBirth" value={formData.dateOfBirth} onChange={handleChange} />
+//             <input type="date" name="date_of_birth" value={formData.date_of_birth} onChange={handleChange} />
 //         </div>
 //         <div>
 //             <label>Phone Number:</label>
-//             <input type="tel" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
+//             <input type="tel" name="phone" value={formData.phone} onChange={handleChange} />
 //         </div>
 //         <div>
 //             <label>Email:</label>
@@ -299,7 +327,7 @@ export default SignupScreen;
 //         </div>
 //         <div>
 //             <label>Ghana Card Number:</label>
-//             <input type="text" name="ghanaCardNumber" value={formData.ghanaCardNumber} onChange={handleChange} />
+//             <input type="text" name="ghana_card_number" value={formData.ghana_card_number} onChange={handleChange} />
 //         </div>
 //         <div>
 //             <label>Address:</label>

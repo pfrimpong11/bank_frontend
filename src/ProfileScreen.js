@@ -1,20 +1,32 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 
 const ProfileScreen = ({ navigation }) => {
-  const profileData = {
-    //data should be fetched from database
-    firstName: "John",
-    lastName: "Doe",
-    dateOfBirth: "01-01-2000",
-    phoneNumber: "233540734085",
-    email: "group19@gmail.com",
-    ghanaCardNumber: "GH-xxxxxxxxxxxx-x",
-    address: "GA-123-4567",
-    accountNumber: "1400005260509",
-  };
 
-  const handleLogoutPress = () => {
+  const [profileData,setData]= useState({})
+  useState(()=>{
+
+axios.get("").then((res)=>{
+  setData(res.profileData)
+}).catch(err=>{
+  alert(err.message)
+})
+  },[])
+  // const profileData = {
+  //   //profileData should be fetched from database
+  //   firstName: "John",
+  //   lastName: "Doe",
+  //   dateOfBirth: "01-01-2000",
+  //   phoneNumber: "233540734085",
+  //   email: "group19@gmail.com",
+  //   ghanaCardNumber: "GH-xxxxxxxxxxxx-x",
+  //   address: "GA-123-4567",
+  //   accountNumber: "1400005260509",
+  // };
+
+  const handleLogoutPress =async () => {
     //log the user out of the app and navigate to the login screen
+    await  axios.post("")
     navigation.navigate("HomeScreen");
   };
 

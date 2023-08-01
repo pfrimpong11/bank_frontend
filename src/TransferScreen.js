@@ -1,28 +1,54 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const TransferScreen = () => {
     const navigate = useNavigate();
+    // const acnNumber =  useRef(null)
+    const [accountData, setAccountData] = useState(false);
+    const [to_account_number, setto_account_number] =  useState("")
+    const [from_account_number, setSenAcnt] =  useState("")
+    const [amount,setAmt ] = useState("")
 
-    const [accountData, setAccountData] = useState({
-        //data should be fetched from database
-        name: "John Doe",
-    });
 
-    const handleVerifyPress = () => {
-        //verify the account number and input the name related to the account number in the name box
-        // Implement your verification logic here, for now, let's just assume the verification is successful and update the account name
-        setAccountData({
-            ...accountData,
-            name: "John Doe", // Replace this with the actual name fetched from the verification process
-        });
+    const handleVerifyPress = async () => {
+     
+    const res =  await  axios.get("",{
+            headers:{
+                withCredentials:true
+            }
+        })
+
+        if(!res.data.ok){
+            alert("Account number does not exist")
+        }
+        else{
+            alert("Account Number  is OK")
+        }
+        setAccountData(res.data.success);
     };
 
-    const handleSendPress = () => {
-        //perform transaction and navigate to the transaction complete screen
-        // Implement your transaction logic here
-        // For now, let's just navigate to the TransactionCompleteScreen
-        navigate("/Status"); // Navigate to TransactionCompleteScreen
+    const handleSendPress = async () => {
+
+       const payload = {
+           from_account_number,
+           to_account_number,
+           amount
+       }
+
+       const res =  await axios.post("",JSON.stringify(payload),{
+        headers:{
+            withCredentials:true
+        }
+       })
+
+       if (!res.data.ok){
+        alert("Transaction Failed")
+
+        return
+       }
+     
+        navigate("/Status",{state:{amount:amount}}); // Navigate to TransactionCompleteScreen
     };
 
 
@@ -33,16 +59,16 @@ const TransferScreen = () => {
             </div>
             <div style={styles.formContainer}>
                 <div style={styles.formElement}>
-                    <label style={styles.label}>Account Number</label>
+                    <label style={styles.label}> Recipient Account Number</label>
                     <div style={styles.inputContainer}>
-                        <input style={styles.input} type="number" placeholder="Enter account number" />
+                        <input style={styles.input} type="number" placeholder="Enter account number" onChange={(e)=>setto_account_number(e.target.value)} required/>
                         <button style={styles.verifyButton} onClick={handleVerifyPress}>Verify</button>
                     </div>
                 </div>
                 <div style={styles.formElement}>
-                    <label style={styles.label}>Account Name</label>
+                    <label style={styles.label}>Sender Account Number</label>
                     <div style={styles.input}>
-                        <div style={styles.outputText}>{accountData.name}</div>
+                        <input type='number' style={styles.outputText} onChange={(e)=>setSenAcnt(e.target.value)} required>{accountData.name}</input>
                     </div>
                 </div>
                 <div style={styles.formElement}>
@@ -54,7 +80,7 @@ const TransferScreen = () => {
                 <div style={styles.formElement}>
                     <label style={styles.label}>Amount</label>
                     <div>
-                        <input style={styles.input} type="number" placeholder="Enter amount" />
+                        <input style={styles.input} type="number" placeholder="Enter amount"  required onChange={(e)=>setAmt(e.target.value)}/>
                     </div>
                 </div>
                 <button style={styles.sendButton} onClick={handleSendPress}>Send</button>
