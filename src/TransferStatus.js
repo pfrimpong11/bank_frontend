@@ -8,7 +8,7 @@ const TransferStatus = () => {
         //data should be fetched from database of the transaction performed
         amount: "100.00",
         recipient: "[account number / wallet number / name]",
-        reference: "[reference]",
+        // reference: "[reference]",
     };
 
     const handleDonePress = () => { //navigate to the main screen to perform other transactions

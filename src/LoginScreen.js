@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -22,34 +23,36 @@ const LoginScreen = () => {
         setPassword(event.target.value);
     };
 
-    const handleLoginPress = () => {
-        // Save login details of the user and grant them access to the app's features
+    const handleLoginPress = async () => {
 
-        // const userEmail = 'email'; // valid email of user
-        // const userPassword = '123'; // valid password of user
+      const payload =  {
+        email,
+        password
+      }
+      if (!email || !password){
+        return alert("Please provide all credentials")
+      }
+      const res = await axios.post("",JSON.stringify(payload),{
+        headers:{
+          withCredentials:true
+      }
+      })
+       
+      // alert("Login successful")
+      if (res.data.success){
 
-        // if (email === userEmail && password === userPassword) {
-        //     // Navigate to the mainscreen on successful login
-        //     // handleNavigationToMainScreen();
-        //     setEmail('');
-        //     setPassword('');
-        // } else {
-        //     // Show an error message for an invalid credential
-        //     alert('Invalid email or password');
-        // }
-
-        // For demonstration purposes, directly navigate to the MainScreen
-        // handleNavigationToMainScreen();
         navigate("/Home");
+      }
+      else{
+        alert("Credentials incorrect")
         setEmail('');
         setPassword('');
+      }
+        
     };
 
     const handleResetPasswordPress = () => {
-        // Implement your password reset logic here
-        // You can use the 'forgotPasswordEmail' state variable to retrieve the entered email address
-        // and send a reset password link to the user's email.
-        // This is just a placeholder function, replace it with your actual logic.
+      
         alert(`Reset password link sent to: ${forgotPasswordEmail}`);
         setModalVisible(false);
         // handleNavigationToForgotPasswordModal();

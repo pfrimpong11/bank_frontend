@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const MainScreen = () => {
 
     const navigate = useNavigate();
 
+    useEffect(()=>{
+
+      alert("Congratulations on creating the account your account have been credited with Ghc 1000.00")
+    },[])
   const accountBalanceDetails = {
-    accountBalance: "1000.64",
+    accountBalance: "1000",
   };
 
   const handleTransferPress = () => {
